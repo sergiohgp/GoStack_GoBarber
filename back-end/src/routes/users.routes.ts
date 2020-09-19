@@ -5,6 +5,7 @@ import multer from 'multer'
 import CreateUserService from '../services/CreateUserService'
 import ensureAuthenticated from '../middlewares/ensureAuthenticated'
 import uploadConfig from '../config/upload'
+import UpdatedUserAvatarService from '../services/UpdateUserAvatarService'
 
 const usersRouter = Router()
 const upload = multer(uploadConfig)
@@ -31,7 +32,20 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async (request, response) => {
-    return response.json({ ok: true })
+    try {
+        const updateUseravatar = new UpdatedUserAvatarService()
+
+        const user = await updateUseravatar.execute({
+            user_id: request.user.id,
+            avatarFilename: request.file.filename,
+        })
+
+        delete user.password
+
+        return response.json(user)
+    } catch (err) {
+        return response.status(400).json({ error: err.message })
+    }
 })
 
 export default usersRouter
