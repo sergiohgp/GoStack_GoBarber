@@ -1,5 +1,5 @@
 import { parseWithOptions } from 'date-fns/fp'
-import { request } from 'express'
+import { Request } from 'express'
 import multer from 'multer'
 import path from 'path'
 import crypto from 'crypto'
