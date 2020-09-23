@@ -1,9 +1,9 @@
-import { Request, Response, NextFunction } from 'express'
-import { verify } from 'jsonwebtoken'
-import auth from '../../config/auth'
+import { Request, Response, NextFunction } from 'express';
+import { verify } from 'jsonwebtoken';
+import auth from '../../../../config/auth';
 
-import authConfig from '../../config/auth'
-import AppError from '../errors/AppError'
+import authConfig from '../../../../config/auth';
+import AppError from '../../../errors/AppError';
 
 interface TokenPayLoad {
   iat: number
