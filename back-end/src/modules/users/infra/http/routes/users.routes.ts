@@ -1,45 +1,49 @@
-import { request, response, Router } from 'express'
-import multer from 'multer'
+import { Router } from 'express';
+import multer from 'multer';
+import uploadConfig from '@config/upload';
 
-// import AppointmentsRepository from '../repositories/AppointmentsRepository'
-import CreateUserService from '@modules/users/services/CreateUserService'
-import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated'
-import uploadConfig from '@config/upload'
-import UpdatedUserAvatarService from '@modules/users/services/UpdateUserAvatarService'
+import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import UpdatedUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
 
-const usersRouter = Router()
-const upload = multer(uploadConfig)
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
+const usersRouter = Router();
+const upload = multer(uploadConfig);
 
 usersRouter.post('/', async (request, response) => {
 
-  const { name, email, password } = request.body
+  const { name, email, password } = request.body;
 
-  const createUser = new CreateUserService()
+  const usersRepository = new UsersRepository();
+
+  const createUser = new CreateUserService(usersRepository);
 
   const user = await createUser.execute({
     name,
     email,
     password
-  })
+  });
 
-  delete user.password
+  delete user.password;
 
-  return response.json(user)
+  return response.json(user);
 })
 
 usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async (request, response) => {
 
-  const updateUseravatar = new UpdatedUserAvatarService()
+  const usersRepository = new UsersRepository();
+
+  const updateUseravatar = new UpdatedUserAvatarService(usersRepository);
 
   const user = await updateUseravatar.execute({
     user_id: request.user.id,
     avatarFilename: request.file.filename,
-  })
+  });
 
-  delete user.password
+  delete user.password;
 
-  return response.json(user)
+  return response.json(user);
 })
 
-export default usersRouter
+export default usersRouter;
