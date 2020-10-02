@@ -11,7 +11,7 @@ interface IRequest {
 }
 
 @injectable()
-class SendForgotPasswordEmailSerice {
+class SendForgotPasswordEmailService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
@@ -30,10 +30,13 @@ class SendForgotPasswordEmailSerice {
       throw new AppError('User does not exist');
     }
 
-    await this.userTokensRepository.generate(user.id)
+    const { token } = await this.userTokensRepository.generate(user.id);
 
-    this.mailProvider.sendMail(email, 'Reset password');
+    await this.mailProvider.sendMail(
+      email,
+      `Reset password claim received: ${token}`);
   }
 }
 
-export default SendForgotPasswordEmailSerice;
+export default SendForgotPasswordEmailService;
+
