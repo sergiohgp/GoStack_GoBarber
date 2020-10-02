@@ -9,9 +9,9 @@ export default class ForgotPasswordController {
     const { email } = request.body;
 
 
-    const sendForgotPasswordEmailService = container.resolve(SendForgotPasswordEmailService);
+    const sendForgotPasswordEmail = container.resolve(SendForgotPasswordEmailService);
 
-    await sendForgotPasswordEmailService.execute({
+    await sendForgotPasswordEmail.execute({
       email,
     });
 

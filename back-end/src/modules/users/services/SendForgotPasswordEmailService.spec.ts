@@ -1,13 +1,13 @@
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
 import FakeUserTokensRepository from '../repositories/fakes/FakeUserTokensRepository';
 import FakeMailProvider from '@shared/container/providers/MailProvider/fakes/FakeMailProvider';
-import SendForgotPasswordEmailSerice from './SendForgotPasswordEmailService';
+import SendForgotPasswordEmailService from './SendForgotPasswordEmailService';
 import AppError from '@shared/errors/AppError';
 
 let fakeUserRepository: FakeUserRepository;
 let fakeMailProvider: FakeMailProvider;
 let fakeUserTokensRepository: FakeUserTokensRepository;
-let sendForgotPasswordEmail: SendForgotPasswordEmailSerice;
+let sendForgotPasswordEmail: SendForgotPasswordEmailService;
 
 describe('SendForgotPassworEmail', () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('SendForgotPassworEmail', () => {
     fakeMailProvider = new FakeMailProvider;
     fakeUserTokensRepository = new FakeUserTokensRepository;
 
-    sendForgotPasswordEmail = new SendForgotPasswordEmailSerice(
+    sendForgotPasswordEmail = new SendForgotPasswordEmailService(
       fakeUserRepository,
       fakeMailProvider,
       fakeUserTokensRepository
