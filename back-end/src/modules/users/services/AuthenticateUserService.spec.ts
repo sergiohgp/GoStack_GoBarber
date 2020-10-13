@@ -1,8 +1,8 @@
+import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
 import AuthenticateUserService from './AuthenticateUserService';
 import CreateUserService from './CreateUserService';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
-import AppError from '@shared/errors/AppError';
 
 let fakeUserRepository: FakeUserRepository;
 let fakeHashProvider: FakeHashProvider;
@@ -15,27 +15,24 @@ describe('AuthenticateUser', () => {
 
     fakeHashProvider = new FakeHashProvider();
 
-    createUser = new CreateUserService(
-      fakeUserRepository,
-      fakeHashProvider
-    );
+    createUser = new CreateUserService(fakeUserRepository, fakeHashProvider);
 
     authenticateUser = new AuthenticateUserService(
       fakeUserRepository,
-      fakeHashProvider
+      fakeHashProvider,
     );
-  })
+  });
 
   it('should be able to authenticate the user', async () => {
     const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
-      password: '1234'
+      password: '1234',
     });
 
     const response = await authenticateUser.execute({
       email: 'johndoe@example.com',
-      password: '1234'
+      password: '1234',
     });
 
     expect(response).toHaveProperty('token');
@@ -46,26 +43,23 @@ describe('AuthenticateUser', () => {
     await expect(
       authenticateUser.execute({
         email: 'johndoe@example.com',
-        password: '1234'
-      }))
-      .rejects
-      .toBeInstanceOf(AppError);
+        password: '1234',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should be able to authenticate a user with wrong password', async () => {
     await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
-      password: '1234'
+      password: '1234',
     });
-
 
     await expect(
       authenticateUser.execute({
         email: 'johndoe@example.com',
-        password: 'wrong-password'
-      }))
-      .rejects
-      .toBeInstanceOf(AppError);
+        password: 'wrong-password',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

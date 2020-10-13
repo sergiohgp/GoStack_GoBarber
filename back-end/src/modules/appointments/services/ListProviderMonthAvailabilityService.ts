@@ -12,25 +12,29 @@ interface IRequest {
 type IReponse = Array<{
   day: number;
   available: boolean;
-}>
+}>;
 
 @injectable()
 class ListProviderMonthAvailabilityService {
   constructor(
     @inject('AppointmentsRepository')
-    private appointmentsRepository: IAppointmentsRepository
+    private appointmentsRepository: IAppointmentsRepository,
   ) { }
 
-  public async execute({ provider_id, year, month }: IRequest): Promise<IReponse> {
-    const appointments = await this.appointmentsRepository.findAllInMonthFromProvider({
-      provider_id,
-      year,
-      month
-    });
-
-    const numberOfDaysInMonth = getDaysInMonth(
-      new Date(year, month - 1)
+  public async execute({
+    provider_id,
+    year,
+    month,
+  }: IRequest): Promise<IReponse> {
+    const appointments = await this.appointmentsRepository.findAllInMonthFromProvider(
+      {
+        provider_id,
+        year,
+        month,
+      },
     );
+
+    const numberOfDaysInMonth = getDaysInMonth(new Date(year, month - 1));
 
     const eachDayArray = Array.from(
       { length: numberOfDaysInMonth },
@@ -44,7 +48,7 @@ class ListProviderMonthAvailabilityService {
 
       return {
         day,
-        available: appointmentsInDay.length < 10
+        available: appointmentsInDay.length < 10,
       };
     });
 

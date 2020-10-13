@@ -1,7 +1,7 @@
+import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import CreateUserService from './CreateUserService';
-import AppError from '@shared/errors/AppError';
 
 let fakeUserRepository: FakeUserRepository;
 let fakeHashProvider: FakeHashProvider;
@@ -13,18 +13,14 @@ describe('CreatUser', () => {
 
     fakeHashProvider = new FakeHashProvider();
 
-    createUser = new CreateUserService(
-      fakeUserRepository,
-      fakeHashProvider
-    );
-
+    createUser = new CreateUserService(fakeUserRepository, fakeHashProvider);
   });
 
   it('should be able to create a new user', async () => {
     const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
-      password: '1234'
+      password: '1234',
     });
 
     expect(user).toHaveProperty('id');
@@ -36,16 +32,15 @@ describe('CreatUser', () => {
     await createUser.execute({
       name: 'John Doe',
       email: userEmail,
-      password: '1234'
+      password: '1234',
     });
 
-    await expect(createUser.execute({
-      name: 'John Doe',
-      email: userEmail,
-      password: '1234'
-    }))
-      .rejects
-      .toBeInstanceOf(AppError);
+    await expect(
+      createUser.execute({
+        name: 'John Doe',
+        email: userEmail,
+        password: '1234',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
-
 });

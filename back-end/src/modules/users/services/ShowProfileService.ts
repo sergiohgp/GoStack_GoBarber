@@ -2,10 +2,9 @@ import { inject, injectable } from 'tsyringe';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 
-import IUsersRepository from '../repositories/IUsersRepository';
-
 import AppError from '@shared/errors/AppError';
 import { hash } from 'bcryptjs';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   user_id: string;
@@ -22,7 +21,7 @@ class ShowProfileService {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('User does not exist')
+      throw new AppError('User does not exist');
     }
 
     return user;

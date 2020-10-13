@@ -28,7 +28,7 @@ export default class ProfileController {
       name,
       email,
       old_password,
-      password
+      password,
     });
 
     delete user.password;

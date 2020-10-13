@@ -1,6 +1,6 @@
+import AppError from '@shared/errors/AppError';
 import FakeUserRepository from '../repositories/fakes/FakeUserRepository';
 import ShowProfileService from './ShowProfileService';
-import AppError from '@shared/errors/AppError';
 
 let fakeUserRepository: FakeUserRepository;
 let showProfile: ShowProfileService;
@@ -9,17 +9,14 @@ describe('UpdateUserAvatar', () => {
   beforeEach(() => {
     fakeUserRepository = new FakeUserRepository();
 
-    showProfile = new ShowProfileService(
-      fakeUserRepository,
-    );
-
-  })
+    showProfile = new ShowProfileService(fakeUserRepository);
+  });
 
   it('should be able to show the profile', async () => {
     const user = await fakeUserRepository.create({
       name: 'John Doe',
       email: 'johndoe@example.com',
-      password: '1234'
+      password: '1234',
     });
 
     const profile = await showProfile.execute({
@@ -31,10 +28,10 @@ describe('UpdateUserAvatar', () => {
   });
 
   it('should not be able to show the profile of a non-existing user', async () => {
-    await expect(showProfile.execute({
-      user_id: 'test',
-    })
-    ).rejects
-      .toBeInstanceOf(AppError);
+    await expect(
+      showProfile.execute({
+        user_id: 'test',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

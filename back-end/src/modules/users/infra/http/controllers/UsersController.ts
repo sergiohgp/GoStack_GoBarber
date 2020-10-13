@@ -12,7 +12,7 @@ export default class UsersController {
     const user = await createUser.execute({
       name,
       email,
-      password
+      password,
     });
 
     delete user.password;

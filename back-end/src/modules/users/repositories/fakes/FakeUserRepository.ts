@@ -8,22 +8,23 @@ import IFindAllProvidersDTO from '../../dtos/IFindAllProvidersDTO';
 class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
-  constructor() {
-  }
+  constructor() { }
 
   public async findById(id: string): Promise<User | undefined> {
-    const user = this.users.find(user => user.id === id);
+    const users = this.users.find(user => user.id === id);
 
-    return user;
+    return users;
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
-    const user = this.users.find(user => user.email === email);
+    const users = this.users.find(user => user.email === email);
 
-    return user;
+    return users;
   }
 
-  public async findAllProviders({ except_user_id }: IFindAllProvidersDTO): Promise<User[]> {
+  public async findAllProviders({
+    except_user_id,
+  }: IFindAllProvidersDTO): Promise<User[]> {
     let { users } = this;
 
     if (except_user_id) {
