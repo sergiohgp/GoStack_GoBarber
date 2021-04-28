@@ -4,25 +4,25 @@
 > Schedule a haircut the easiest way
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/tiago-soriano/" target="_blank" rel="noopener noreferrer">
-    <img alt="Author" src="https://img.shields.io/badge/Author-tiago--web-%23FF9000">
+  <a href="https://www.linkedin.com/in/sergio-hg-pereira/" target="_blank" rel="noopener noreferrer">
+    <img alt="Author" src="https://img.shields.io/badge/Author-sergiohgp-%23FF9000">
   </a>
   
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/tiago-web/GoBarber-api?color=%23FF9000">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/sergiohgp/GoStack_GoBarber?color=%23FF9000">
 
   <a href="https://github.com/tiago-web/GoBarber-api/stargazers">
-    <img alt="Stars" src="https://img.shields.io/github/stars/tiago-web/GoBarber-api?color=%23FF9000" />
+    <img alt="Stars" src="https://img.shields.io/github/stars/sergiohgp/GoStack_GoBarber?color=%23FF9000" />
    </a>
 
   <a href="https://github.com/tiago-web/GoBarber-api/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/tiago-web/GoBarber-api?color=%23FF9000">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/sergiohgp/GoStack_GoBarber?color=%23FF9000">
   </a>
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/tiago-web/GoBarber-api?color=%23FF9000">
+  <img alt="GitHub" src="https://img.shields.io/github/license/sergiohgp/GoStack_GoBarber?color=%23FF9000">
 </p>
 
 <p id="insomniaButton" align="center">
-  <a href="https://insomnia.rest/run/?label=GoBarber-api&uri=https%3A%2F%2Fraw.githubusercontent.com%2Ftiago-web%2FGobarber-api%2Fmaster%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=GoStack_GoBarber&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fsergiohgp%2FGoStack_GoBarber%2Fmaster%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 </p>
 
 # :pushpin: Table of Contents
@@ -44,8 +44,8 @@ Customers can choose the best time available to them.
 
 Providers can see all their appointments, manage the times, also see if one client canceled the schedule.
 
-To see the **web client**, click here: [GoBarber Web](https://github.com/tiago-web/GoBarber-web)<br />
-To see the **mobile client**, click here: [GoBarber Mobile](https://github.com/tiago-web/GoBarber-mobile)
+To see the **web client**, click here: [GoBarber Web](https://github.com/sergiohgp/GoStack_GoBarber_Web)<br />
+To see the **mobile client**, click here: [GoBarber Mobile](https://github.com/sergiohgp/GoStack_GoBarber_Mobile)
 
 # :rocket: Technologies
 
@@ -82,7 +82,7 @@ Import the `Insomnia.json` on Insomnia App or click on [Run in Insomnia](#insomn
 **Clone the project and access the folder**
 
 ```bash
-$ git clone https://github.com/tiago-web/GoBarber-api.git && cd GoBarber-api
+$ git clone https://github.com/sergiohgp/GoStack_GoBarber.git && cd GoStack_GoBarber
 ```
 
 **Follow the steps below**
@@ -129,14 +129,14 @@ $ yarn dev:server
 # Fork using GitHub official command line
 # If you don't have the GitHub CLI, use the web site to do that.
 
-$ gh repo fork tiago-web/GoBarber-api
+$ gh repo fork sergiohgp/GoStack_GoBarber
 ```
 
 **Follow the steps below**
 
 ```bash
 # Clone your fork
-$ git clone your-fork-url && cd GoBarber-api
+$ git clone your-fork-url && cd GoStack_GoBarber
 
 # Create a branch with your feature
 $ git checkout -b my-feature
@@ -152,14 +152,14 @@ After your pull request is merged, you can delete your branch
 
 # :hammer: Issues
 
-Feel free to file a new issue with a respective title and description on the [GoBarber-api](https://github.com/tiago-web/GoBarber-api/issues) repository. 
+Feel free to file a new issue with a respective title and description on the [GoBarber-api](https://github.com/sergiohgp/GoStack_GoBarber/issues) repository. 
 If you already found a solution to your problem, **i would appreciate to review your pull request**!
 
 
 # :book: License
 
 Released in 2020.
-This project is under the [MIT license](https://github.com/tiago-web/GoBarber-api/blob/master/LICENSE).
+This project is under the [MIT license](https://github.com/sergiohgp/GoStack_GoBarber/blob/master/LICENSE).
 
 ---
 
