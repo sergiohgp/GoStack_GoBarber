@@ -1,7 +1,3 @@
-<p align="center">
-  <img alt="Logo" src=".github/gobarber-logo.svg" width="200px">
-</p>
-
 
 # Express API for the GoBarber project
 
